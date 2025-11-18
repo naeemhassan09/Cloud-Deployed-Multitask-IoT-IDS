@@ -1,0 +1,32 @@
+# Core
+numpy
+pandas
+scikit-learn
+
+# Deep learning
+torch
+torchvision
+torchaudio
+
+# Baselines
+xgboost
+pytorch-tabnet
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Experiment tracking / utils
+matplotlib
+seaborn
+loguru
+
+# Data versioning
+dvc
+
+# Monitoring
+prometheus-client
+
+# Testing
+pytest

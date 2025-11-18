@@ -1,0 +1,20 @@
+{
+  "family": "iot-multitask-ids-api",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "api",
+      "image": "<ECR_IMAGE_URI>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024"
+}

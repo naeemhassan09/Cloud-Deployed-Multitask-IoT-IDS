@@ -37,3 +37,4 @@ logs/
 # Docker
 *.pid
 
+papers/*

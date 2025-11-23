@@ -30,3 +30,7 @@ prometheus-client
 
 # Testing
 pytest
+
+
+pyarrow
+fastparquet

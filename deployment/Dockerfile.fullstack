@@ -1,0 +1,39 @@
+# ---------- Stage 1: Build frontend ----------
+FROM node:22-alpine AS frontend_builder
+WORKDIR /frontend
+
+COPY frontend/package*.json ./
+RUN npm ci
+
+COPY frontend/ ./
+RUN npm run build
+
+# ---------- Stage 2: Backend runtime ----------
+FROM python:3.11-slim AS runtime
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# System deps (keep minimal)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+# Python deps
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# Copy backend code + artifacts
+COPY src/ /app/src/
+COPY data/ /app/data/
+COPY models/ /app/models/
+COPY deployment/ /app/deployment/
+
+# Copy built frontend into repo path expected by FastAPI
+COPY --from=frontend_builder /frontend/dist /app/frontend/dist
+
+EXPOSE 8000
+
+# IMPORTANT: use your repo path (README uses src.api.main:app)  [oai_citation:1‡GitHub](https://github.com/naeemhassan09/Cloud-Deployed-Multitask-IoT-IDS/tree/main)
+CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

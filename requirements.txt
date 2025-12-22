@@ -34,3 +34,5 @@ pytest
 
 pyarrow
 fastparquet
+
+python-multipart

@@ -1,4 +1,6 @@
 from __future__ import annotations
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,24 +25,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 MODELS_DIR = PROJECT_ROOT / "models"
 
-# ---- SPA serving (React build) ----
-FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
 
-if FRONTEND_DIST.exists():
-    app.mount("/assets", StaticFiles(directory=FRONTEND_DIST / "assets"), name="assets")
-
-    @app.get("/")
-    def spa_index():
-        return FileResponse(FRONTEND_DIST / "index.html")
-
-    # React Router fallback (SPA)
-    @app.get("/{full_path:path}")
-    def spa_fallback(full_path: str):
-        # Do not hijack API routes
-        if full_path.startswith("api/") or full_path.startswith("docs") or full_path.startswith("openapi"):
-            raise HTTPException(status_code=404, detail="Not found")
-        return FileResponse(FRONTEND_DIST / "index.html")
-    
 # --------------------------------------------------------------
 # Load scaler (feature schema + normalization)
 # --------------------------------------------------------------
@@ -109,6 +94,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# --------------------------------------------------------------
+# SPA serving (React build) - MUST be after app is defined
+# --------------------------------------------------------------
+FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
+
+if FRONTEND_DIST.exists():
+    assets_dir = FRONTEND_DIST / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/")
+    def spa_index():
+        return FileResponse(FRONTEND_DIST / "index.html")
+
+    # React Router fallback (SPA) - do not hijack API/docs
+    @app.get("/{full_path:path}")
+    def spa_fallback(full_path: str):
+        if full_path.startswith("api/") or full_path in ("docs", "openapi.json", "redoc", "health"):
+            raise HTTPException(status_code=404, detail="Not found")
+        return FileResponse(FRONTEND_DIST / "index.html")
 
 class PacketFeatures(BaseModel):
     features: list[float]

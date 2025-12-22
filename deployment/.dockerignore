@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+
+# Git
+.git/
+.gitignore
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+
+# Mac/OS
+.DS_Store
+
+# Large data (optional – only if not required inside the image)
+# data/raw/
+# data/interim/

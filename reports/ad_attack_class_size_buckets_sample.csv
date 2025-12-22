@@ -1,0 +1,6 @@
+bucket,num_attack_classes
+<=10k,0
+10k-50k,0
+50k-100k,1
+100k-300k,0
+>300k,2

@@ -38,3 +38,63 @@ logs/
 *.pid
 
 papers/*
+
+
+
+# =========================
+# Frontend (React / Vite)
+# =========================
+
+# Build outputs
+frontend/dist/
+dist/
+
+# Vite cache
+frontend/node_modules/.vite/
+.vite/
+
+# Node dependencies
+frontend/node_modules/
+node_modules/
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local env files (frontend)
+frontend/.env
+frontend/.env.*
+!.env.example
+
+# Editor / OS junk
+.DS_Store
+*.log
+
+# Coverage / test artifacts
+frontend/coverage/
+coverage/
+
+# Storybook / UI tooling
+frontend/storybook-static/
+storybook-static/
+
+# Cypress / Playwright (if added later)
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+frontend/playwright-report/
+playwright-report/
+
+# Temporary uploads / previews (CSV drag-drop, blobs)
+frontend/public/uploads/
+frontend/src/tmp/
+frontend/src/.cache/
+
+# Build analysis artifacts
+frontend/stats.html
+frontend/bundle-report.html
+
+# TypeScript build info
+frontend/*.tsbuildinfo
+*.tsbuildinfo

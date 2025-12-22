@@ -1,0 +1,4 @@
+attack_label,count,percentage
+ddos,250000,50.0
+benign,200000,40.0
+brute force,50000,10.0

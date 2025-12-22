@@ -1,0 +1,214 @@
+device_mac,attack_label,count
+00:a3:d1:07:6f:03,benign,3079
+00:a3:d1:07:6f:03,brute force,1021
+00:a3:d1:07:6f:03,ddos,538
+00:a3:d1:07:6f:47,brute force,21
+24:05:88:30:6f:89,benign,3524
+24:05:88:30:6f:89,brute force,656
+24:05:88:30:6f:89,ddos,438
+3c:18:a0:41:c3:a0,benign,18875
+3c:18:a0:41:c3:a0,brute force,6927
+3c:18:a0:41:c3:a0,ddos,7555
+56:4f:8a:e1:f3:2d,benign,2899
+56:4f:8a:e1:f3:2d,brute force,3735
+56:4f:8a:e1:f3:2d,ddos,1233
+5c:26:0a:28:80:77,benign,920
+5c:26:0a:28:80:77,brute force,299
+5c:26:0a:28:80:77,ddos,110
+94:39:e5:5d:27:a6,brute force,3408
+AMCREST WiFi Camera,benign,1123
+AMCREST WiFi Camera,brute force,646
+AMCREST WiFi Camera,ddos,1562
+AeoTec Smart Home Hub,benign,4184
+AeoTec Smart Home Hub,brute force,1419
+AeoTec Smart Home Hub,ddos,858
+Amazon Echo Dot 1,benign,3713
+Amazon Echo Dot 1,brute force,1562
+Amazon Echo Dot 1,ddos,5471
+Amazon Echo Dot 2,benign,10683
+Amazon Echo Dot 2,brute force,3131
+Amazon Echo Dot 2,ddos,1228
+Amazon Echo Show,benign,14709
+Amazon Echo Show,brute force,1469
+Amazon Echo Show,ddos,615
+Amazon Echo Spot,brute force,3660
+Amazon Echo Spot,ddos,556
+Amazon Echo Studio,benign,6170
+Amazon Echo Studio,brute force,1620
+Amazon Echo Studio,ddos,673
+Amazon Plug,benign,453
+Amazon Plug,brute force,126
+Amazon Plug,ddos,624
+Arlo Base Station,benign,1611
+Arlo Base Station,brute force,672
+Arlo Base Station,ddos,256
+Arlo Q Indoor Camera,benign,168644
+Arlo Q Indoor Camera,brute force,2712
+Arlo Q Indoor Camera,ddos,1988
+Atomi Coffee Maker,benign,1109
+Atomi Coffee Maker,brute force,351
+Atomi Coffee Maker,ddos,100
+Borun/Sichuan-AI Camera,brute force,1523
+Borun/Sichuan-AI Camera,ddos,426
+Cocoon Smart HVAC Fan,benign,914
+Cocoon Smart HVAC Fan,brute force,291
+Cocoon Smart HVAC Fan,ddos,314
+DCS8000LHA1 D-Link Mini Camera,benign,255
+DCS8000LHA1 D-Link Mini Camera,brute force,83
+DCS8000LHA1 D-Link Mini Camera,ddos,315
+Eufy HomeBase 2,benign,1696
+Eufy HomeBase 2,brute force,484
+Eufy HomeBase 2,ddos,299
+Globe Lamp ESP_B1680C,brute force,499
+Globe Lamp ESP_B1680C,ddos,1182
+GoSund Bulb,benign,1498
+GoSund Bulb,brute force,501
+GoSund Bulb,ddos,285
+GoSund Power strip (2),benign,1497
+GoSund Power strip (2),brute force,496
+GoSund Power strip (2),ddos,311
+GoSund Smart Plug WP2 (2),benign,1495
+GoSund Smart Plug WP2 (2),brute force,496
+GoSund Smart Plug WP2 (2),ddos,292
+GoSund Smart Plug WP3 (1),benign,1495
+GoSund Smart Plug WP3 (1),ddos,353
+GoSund Smart plug WP2 (1),benign,1500
+GoSund Smart plug WP2 (1),brute force,499
+GoSund Smart plug WP2 (1),ddos,406
+GoSund Smart plug WP2 (3),benign,1498
+GoSund Smart plug WP2 (3),brute force,496
+GoSund Smart plug WP2 (3),ddos,289
+Google Nest Mini Speaker,benign,4837
+Google Nest Mini Speaker,brute force,1501
+Google Nest Mini Speaker,ddos,1814
+Gosund Power strip (1),benign,1496
+Gosund Power strip (1),brute force,497
+Gosund Power strip (1),ddos,422
+Gosund Smart Plug WP3 (2),benign,1499
+Gosund Smart Plug WP3 (2),brute force,498
+Gosund Smart Plug WP3 (2),ddos,343
+Govee Smart Humidifer,benign,163
+Govee Smart Humidifer,brute force,54
+Govee Smart Humidifer,ddos,156
+HeimVision Smart WiFi Camera,benign,2170
+HeimVision Smart WiFi Camera,ddos,669
+HeimVision SmartLife Radio/Lamp,benign,1278
+HeimVision SmartLife Radio/Lamp,brute force,1447
+Home Eye Camera,benign,4604
+Home Eye Camera,brute force,1426
+Home Eye Camera,ddos,363
+LG Smart TV,benign,4442
+LG Smart TV,ddos,1387
+LIFX Lightbulb,benign,262
+LIFX Lightbulb,brute force,225
+LIFX Lightbulb,ddos,65
+LampUX RGB,benign,1464
+LampUX RGB,brute force,495
+LampUX RGB,ddos,282
+Levoit Air Purifier,benign,738
+Levoit Air Purifier,brute force,251
+Levoit Air Purifier,ddos,355
+Lumiman bulb,benign,1145
+Lumiman bulb,brute force,368
+Lumiman bulb,ddos,505
+Luohe Cam Dog,brute force,215
+Luohe Cam Dog,ddos,73
+Nest Indoor Camera,benign,44905
+Nest Indoor Camera,brute force,7388
+Nest Indoor Camera,ddos,619
+Netatmo Camera,benign,3517
+Netatmo Camera,brute force,10092
+Netatmo Camera,ddos,947
+Netatmo Weather Station,benign,1289
+Netatmo Weather Station,brute force,445
+Netatmo Weather Station,ddos,445
+Philips Hue Bridge,benign,4527
+Philips Hue Bridge,brute force,910
+Philips Hue Bridge,ddos,784
+Raspberry Pi 4-2 GB,benign,20
+Raspberry Pi 4-2 GB,brute force,14
+Raspberry Pi 4-2 GB,ddos,21
+Rbcior Camera,benign,2773
+Rbcior Camera,brute force,1297
+Rbcior Camera,ddos,288
+SIMCAM 1S (AMPAKTec),brute force,2120
+SIMCAM 1S (AMPAKTec),ddos,37
+Smart Board,benign,1
+Smart Board,brute force,81
+Smart Board,ddos,124
+SmartThings Hub,benign,4376
+SmartThings Hub,brute force,1509
+SmartThings Hub,ddos,725
+Sonos One Speaker,benign,1104
+Sonos One Speaker,brute force,367
+Sonos One Speaker,ddos,8556
+TP-Link Tapo Camera,benign,2119
+TP-Link Tapo Camera,brute force,358
+TP-Link Tapo Camera,ddos,991
+Teckin Light Strip,benign,1097
+Teckin Light Strip,brute force,371
+Teckin Light Strip,ddos,434
+Teckin Plug 1,benign,1030
+Teckin Plug 1,brute force,308
+Teckin Plug 1,ddos,220
+Teckin Plug 2,benign,1028
+Teckin Plug 2,brute force,328
+Teckin Plug 2,ddos,180
+Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3),benign,4
+Wemo smart plug 1 (Wemo id: Wemo.Mini.AD3),brute force,34
+Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3),benign,249
+Wemo smart plug 2 (Wemo id: Wemo.Mini.4A3),brute force,71
+Wyze Camera,benign,5185
+Wyze Camera,brute force,3157
+Wyze Camera,ddos,1273
+Yi Indoor 2 Camera,benign,4982
+Yi Indoor 2 Camera,brute force,856
+Yi Indoor 2 Camera,ddos,125
+Yi Indoor Camera,benign,1939
+Yi Indoor Camera,brute force,535
+Yi Indoor Camera,ddos,257
+Yi Outdoor Camera,benign,745
+Yi Outdoor Camera,ddos,177
+Yutron Plug 1,benign,1036
+Yutron Plug 1,brute force,308
+Yutron Plug 1,ddos,148
+Yutron Plug 2,benign,1076
+Yutron Plug 2,brute force,327
+Yutron Plug 2,ddos,177
+ac:17:02:05:34:27,benign,29504
+b0:09:da:3e:82:6c,benign,1118
+b0:09:da:3e:82:6c,brute force,395
+b0:09:da:3e:82:6c,ddos,447
+d4:81:d7:97:d0:29,benign,842
+d4:81:d7:97:d0:29,brute force,340
+d4:81:d7:97:d0:29,ddos,68
+dc:a6:32:c9:e4:90,benign,5
+dc:a6:32:c9:e4:90,ddos,110750
+dc:a6:32:c9:e4:ab,benign,5
+dc:a6:32:c9:e4:ab,brute force,1
+dc:a6:32:c9:e4:ab,ddos,130058
+dc:a6:32:c9:e4:c6,benign,15
+dc:a6:32:c9:e4:c6,brute force,5
+dc:a6:32:c9:e4:c6,ddos,155
+dc:a6:32:c9:e4:d5,benign,5
+dc:a6:32:c9:e4:d5,ddos,55279
+dc:a6:32:c9:e5:a4,benign,6
+dc:a6:32:c9:e5:a4,ddos,45711
+dc:a6:32:c9:e5:ef,benign,5
+dc:a6:32:c9:e5:ef,brute force,1
+dc:a6:32:c9:e5:ef,ddos,82209
+dc:a6:32:dc:27:d5,benign,2551
+dc:a6:32:dc:27:d5,brute force,21643
+dc:a6:32:dc:27:d5,ddos,159159
+e4:5f:01:55:90:c4,benign,4
+e4:5f:01:55:90:c4,ddos,63693
+e8:1b:69:f8:d4:e3,benign,210
+e8:1b:69:f8:d4:e3,brute force,593
+e8:1b:69:f8:d4:e3,ddos,914
+e8:1b:69:f8:d6:e6,benign,560
+e8:1b:69:f8:d6:e6,brute force,296
+e8:1b:69:f8:d6:e6,ddos,277
+harman kardon (Ampak Technology),benign,4303
+iRobot Roomba,benign,223
+iRobot Roomba,brute force,70
+iRobot Roomba,ddos,41

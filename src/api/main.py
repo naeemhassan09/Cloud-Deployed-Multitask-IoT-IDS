@@ -23,6 +23,24 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 MODELS_DIR = PROJECT_ROOT / "models"
 
+# ---- SPA serving (React build) ----
+FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+
+if FRONTEND_DIST.exists():
+    app.mount("/assets", StaticFiles(directory=FRONTEND_DIST / "assets"), name="assets")
+
+    @app.get("/")
+    def spa_index():
+        return FileResponse(FRONTEND_DIST / "index.html")
+
+    # React Router fallback (SPA)
+    @app.get("/{full_path:path}")
+    def spa_fallback(full_path: str):
+        # Do not hijack API routes
+        if full_path.startswith("api/") or full_path.startswith("docs") or full_path.startswith("openapi"):
+            raise HTTPException(status_code=404, detail="Not found")
+        return FileResponse(FRONTEND_DIST / "index.html")
+    
 # --------------------------------------------------------------
 # Load scaler (feature schema + normalization)
 # --------------------------------------------------------------

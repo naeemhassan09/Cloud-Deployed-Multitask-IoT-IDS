@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_REGION: "us-east-1"
+    IMAGE_REPO_NAME: "iot-ids-fullstack"
+    IMAGE_TAG: "latest"
+
+phases:
+  pre_build:
+    commands:
+      - echo "Login to ECR"
+      - ACCOUNT_ID=529190377814
+      - ECR_URI=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URI
+      - REPOSITORY_URI=$ECR_URI/$IMAGE_REPO_NAME
+  build:
+    commands:
+      - docker build -f deployment/Dockerfile.fullstack -t $REPOSITORY_URI:$IMAGE_TAG .
+  post_build:
+    commands:
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - printf '[{"name":"iot-ids-fullstack","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json

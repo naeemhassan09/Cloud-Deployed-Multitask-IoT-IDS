@@ -22,11 +22,23 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Data / models (tracked via DVC or external storage)
+# Large data (never commit)
 data/raw/
 data/interim/
-data/processed/
-models/weights/
+
+# Processed data: ignore by default, but allow deployment artifacts + demo samples
+data/processed/*
+!data/processed/*scaler*.json
+!data/processed/*label_mapping*.json
+!data/processed/feature_scaler_stats*.json
+
+
+# Models: ignore by default, but allow final deploy weight file(s)
+models/*
+!models/*.pt
+!models/*.json
+
+
 *.dvc
 .dvc/
 

@@ -1,0 +1,22 @@
+{
+  "attack_to_id": {
+    "benign": 0,
+    "brute force": 1,
+    "ddos": 2,
+    "dos": 3,
+    "mirai": 4,
+    "recon": 5,
+    "spoofing": 6,
+    "web-based": 7
+  },
+  "id_to_attack": {
+    "0": "benign",
+    "1": "brute force",
+    "2": "ddos",
+    "3": "dos",
+    "4": "mirai",
+    "5": "recon",
+    "6": "spoofing",
+    "7": "web-based"
+  }
+}

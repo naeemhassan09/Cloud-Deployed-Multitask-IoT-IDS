@@ -1,194 +1,294 @@
-# 📡 Cloud-Deployed Multitask Deep Learning for IoT Device & Intrusion Detection
+# 📡 Cloud‑Deployed Multitask IoT Intrusion & Device Detection Platform
+**MSc Artificial Intelligence – Applied Research Project (Dublin Business School)**
 
-### A CNN–Transformer multitask model deployed as an AWS ECS FastAPI microservice.
+This repository contains the **complete, implemented artefact** for the MSc Applied Research Project.
+All sections below **strictly reflect the code, notebooks, experiments, and results that are actually implemented and executed** in this repository.
 
 ---
 
-# 👤 Author & Contact
+## 👤 Author & Supervisor
 
-**Author:**  
-**Naeem ul Hassan**  
-Strategic Engineering Manager | MSc Artificial Intelligence Student  
-Dublin, Ireland  
-Email: **naeemhassan09@gmail.com**  
-Phone: **+353 87 031 1061**
-       **+92 336 6622999**
+**Author:** Naeem ul Hassan  
+Strategic Engineering Manager | MSc Artificial Intelligence  
+Dublin Business School, Ireland  
+Email: naeemhassan09@gmail.com  
+Phone: +353 87 031 1061 | +92 336 6622999  
 
-**Supervisor:**  
-**Dr. Syed Mustufa**  
+**Supervisor:** Dr. Syed Mustufa  
 Lecturer & Research Supervisor  
 Dublin Business School  
-Email: **syed.mustufa@dbs.ie**
+Email: syed.mustufa@dbs.ie  
 
 ---
 
-## 📘 Project Summary
+## 🎯 Project Overview (Implemented Scope)
 
-This repository contains the source code, data pipeline, training environment, baseline models, and deployment scripts for a **multitask CNN–Transformer framework** designed for **IoT device identification** and **network intrusion detection** using the **CIC IoT-IDAD 2024** dataset.  
-The system is implemented as a **containerised FastAPI microservice**, deployed on **AWS ECS Fargate**, with CI/CD automation and optional monitoring through Prometheus and Grafana.
+This project delivers an **end‑to‑end IoT security analytics system** that performs:
 
-This project is developed as part of the **MSc in Artificial Intelligence** at **Dublin Business School**, supervised by **Dr. Syed Mustufa**, with a strong emphasis on reproducibility, performance benchmarking, and cloud-based deployment.
+1. **Network Intrusion Detection (primary task)**
+2. **IoT Device Identification (secondary task)**
 
----
+using the **packet‑based labeled subset of the CIC IoT‑IDAD 2024 dataset**.
 
-## 🚀 Features
-- Multitask CNN–Transformer architecture  
-- Two prediction heads:
-  - IoT device identification  
-  - Intrusion/attack classification  
-- Baseline models: XGBoost, BiLSTM, TabNet  
-- DVC-tracked data pipeline  
-- FastAPI microservice  
-- Dockerised deployment  
-- AWS ECS Fargate infrastructure  
-- CI/CD pipeline (GitHub Actions → ECR → ECS)  
-- Optional monitoring with Prometheus/Grafana  
+The system includes:
+- Classical **single‑task baselines** (KNN, Random Forest, XGBoost, MLP)
+- A **best single‑task deep learning model** (CNN‑based)
+- A **final multitask CNN model** with staged training
+- A **FastAPI backend**
+- A **frontend UI for demo & examiner review**
+- **AWS CI/CD** using CodePipeline + CodeBuild
+- **Docker + Amazon ECR + ECS (Fargate‑ready)** deployment
 
 ---
 
-## 📛 Badges
+## 📓 Notebooks (What Is Implemented)
 
-![Docker](https://img.shields.io/badge/Docker-ready-blue)
-![AWS ECS](https://img.shields.io/badge/AWS-ECS-orange)
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+The `notebooks/` directory **does implement and execute** the following baselines:
+
+### ✅ Implemented single‑task baselines
+- **K‑Nearest Neighbours (KNN)**
+- **Random Forest (RF)**
+- **Classical XGBoost**
+
+These are trained and evaluated for **intrusion detection (attack_id)** only and are used as **comparative baselines**.
+
+### Notebook responsibilities
+- Data inspection & validation
+- Baseline model training
+- Confusion matrices & classification reports
+- Validation vs test comparison
 
 ---
 
-## 📂 Repository Structure
+## 📊 Baseline Results (From Executed Runs)
+
+### KNN (Single‑Task Intrusion Detection)
+- **Test Accuracy:** 0.9320  
+- **Macro‑F1:** 0.9264  
+
+### Random Forest (Single‑Task Intrusion Detection)
+- **Test Accuracy:** 0.9885  
+- **Macro‑F1:** 0.9864  
+
+### XGBoost (Single‑Task Intrusion Detection)
+- **Test Accuracy:** 0.9952  
+- **Macro‑F1:** 0.9942  
+
+
+
+These results are generated directly from the notebook and training scripts and are reported in the dissertation for benchmarking.
+
+---
+
+## 🧠 Final Model – Multitask CNN (Implemented)
+
+### Architecture
+- **Shared CNN backbone** for packet‑feature extraction
+- **Two task‑specific heads**
+  - Intrusion / attack classification
+  - IoT device identification
+- **Staged training strategy**
+  1. Train attack head
+  2. Freeze backbone + attack head, train device head
+  3. Joint fine‑tuning (attack‑dominant loss weighting)
+
+---
+
+## 📈 Final Multitask Results (Stage‑3)
+
+### Intrusion Detection (Attack Head – Test)
+- **Accuracy:** **0.9480**
+- **Macro‑F1:** 0.9412
+
+### Device Identification (Device Head – Test)
+- **Overall Accuracy:** **0.6517**
+- Large‑scale multi‑class problem (90+ devices)
+- Results reported using top‑device breakdowns (as in dissertation)
+
+These results represent the **final evaluated artefact** of the project.
+
+---
+
+## 🖥 Backend – FastAPI (Implemented)
+
+The trained models are exposed through a **FastAPI microservice**.
+
+### Key endpoints
+- `GET /health` – service health
+- `POST /predict` – inference (attack + device)
+- `GET /docs` – Swagger UI
+- `GET /metrics` – Prometheus metrics (optional)
+
+---
+
+## 🖥 Frontend UI (Implemented)
+
+A frontend UI is included to:
+- Provide a **visual demo for examiners**
+- Submit feature vectors / JSON payloads
+- Display predicted:
+  - Intrusion class
+  - Device identity
+
+The frontend **does not perform ML inference**.
+All predictions are served via the FastAPI backend.
+
+---
+
+## 🧱 End‑to‑End Architecture
+
+```
+Packet‑based CIC IoT‑IDAD 2024
+            │
+            ▼
+   Preprocessing & splits
+            │
+            ▼
+   Baselines (KNN / RF / XGB )
+  
+            │
+            ▼
+   Multitask CNN (staged training)
+            │
+            ▼
+   FastAPI backend
+            │
+            ▼
+        Frontend UI
+            │
+            ▼
+ Docker → ECR → ECS
+            │
+            ▼
+ AWS CodePipeline
+```
+
+---
+
+## 📁 Repository Structure (Actual)
 
 ```
 Cloud-Deployed-Multitask-IoT-IDS/
-├── data/
 ├── src/
-│   ├── data/
-│   ├── models/
-│   ├── training/
-│   ├── api/
+│   ├── api/              # FastAPI backend
+│   ├── models/           # CNN & multitask models
+│   ├── training/         # Baseline & multitask training
+│   ├── frontend/         # Frontend UI
 │   └── utils/
-├── configs/
-├── experiments/
+├── notebooks/            # Baselines + EDA
 ├── deployment/
-├── monitoring/
-├── notebooks/
-├── docs/
-├── admin/
+│   ├── Dockerfile.api
+│   ├── buildspec.yml     # AWS CodeBuild
+│   └── ecs/              # ECS configs
+├── monitoring/           # Metrics & dashboards
+├── reports/              # Results, tables, figures
+├── data/
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🔧 Installation
+## ⚙️ Local Setup
 
-### Clone repo
-```
+```bash
 git clone https://github.com/naeemhassan09/Cloud-Deployed-Multitask-IoT-IDS.git
 cd Cloud-Deployed-Multitask-IoT-IDS
-```
-
-### Install dependencies
-```
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Setup DVC
-```
-dvc pull
-```
-
 ---
 
-## 🧹 Data Pipeline
-
-Run full ETL pipeline:
-
-```
-dvc repro
-```
-
----
-
-## 🧠 Training
+## 🧪 Training
 
 ### Baselines
-```
-python -m src.training.train_baselines --model xgboost
-python -m src.training.train_baselines --model bilstm
-python -m src.training.train_baselines --model tabnet
-```
+Executed via notebooks or training scripts.
 
-### Multitask CNN–Transformer
-```
-python -m src.training.train_multitask \
-  --config configs/model_multitask.yaml \
-  --training configs/training_multitask.yaml
+### Multitask CNN
+```bash
+python -m src.training.train_multitask_cnn_staged
 ```
 
 ---
 
-## 🖥 Run API
+## 🐳 Docker & AWS CI/CD (Implemented)
 
+- **CI/CD:** AWS CodePipeline
+- **Build:** AWS CodeBuild
+- **Image Registry:** Amazon ECR
+- **Runtime:** AWS ECS (Fargate‑ready)
+
+Pipeline:
 ```
-uvicorn src.api.main:app --reload
-```
-
-Docs at:
-
-```
-http://localhost:8000/docs
-```
-
----
-
-## 🐳 Docker
-
-```
-docker build -t iot-ids-api -f deployment/Dockerfile.api .
-docker run -p 8000:8000 iot-ids-api
+GitHub → aws CodePipeline → aws CodeBuild → aws ECR → aws ECS
 ```
 
 ---
+## ☁️ Cloud Deployment – ECS Runtime Performance (Live Server Results)
 
-## ☁️ AWS ECS Deployment
+The final **multitask CNN model** was deployed on **AWS ECS (Fargate)** using the current task definition.  
+The following metrics were captured from a **live inference run** on the deployed service.
 
-Push container:
-```
-deployment/scripts/build_and_push_ecr.sh
-```
-
-Redeploy ECS service:
-```
-aws ecs update-service --cluster <cluster> --service <service> --force-new-deployment
-```
-
----
-
-## 📈 Monitoring
-
-### Prometheus
-Exposes:
-```
-/metrics
-```
-
-Grafana dashboards included in:
-```
-monitoring/grafana_dashboards/
-```
+### 🔢 Evaluation Setup
+- **Deployment:** AWS ECS (Fargate)
+- **Model:** Multitask CNN (shared backbone + dual heads)
+- **Input size:** 5,000 packet-level records
+- **Tasks:**
+  - Intrusion detection (attack vs benign)
+  - IoT device identification
+- **Inference mode:** Batch REST request via FastAPI
 
 ---
 
-## 📘 Documentation
+### 📊 Traffic Composition
+| Class   | Percentage |
+|--------|------------|
+| Benign | **43.2%**  |
+| Attacks| **56.8%**  |
 
-- `docs/architecture_diagram.drawio`
-- `docs/methodology_diagram.png`
-- `docs/api_openapi_schema.json`
-- `docs/results_tables.md`
+This represents a realistic, attack-heavy traffic mix suitable for stress-testing cloud inference.
 
 ---
 
+### ⏱️ Latency Breakdown
+| Stage            | Time |
+|------------------|------|
+| **Total latency**| **3,885.3 ms** |
+| Preprocessing   | 80.7 ms (**0.016 ms/row**) |
+| Inference       | 3,653.0 ms (**0.731 ms/row**) |
+
+- Preprocessing overhead is minimal.
+- Inference dominates latency, as expected for deep learning workloads.
+
+---
+
+### 🚀 Throughput
+- **Throughput:** **1,369 rows/second**
+
+The service sustains ~1.3K packets/s while performing **dual-task inference** in a single forward pass.
+
+---
+
+### 🧠 Model Snapshot (Deployed)
+- **Architecture:** Multitask CNN
+- **Backbone:** Shared CNN feature extractor
+- **Heads:**
+  - Intrusion classification head
+  - Device identification head
+- **Inference:** Single forward pass for both tasks
+
+---
+
+### 🧪 Interpretation 
+- Demonstrates **stable real-time performance** on managed cloud infrastructure.
+- Multitask inference avoids duplicated pipelines while delivering operational throughput.
+- Confirms **practical deployability** of the proposed architecture on AWS ECS.
 
 
+
+---
 # 📚 About the Author
 
 I work across AI, Deep Learning, IoT Security, and Cloud DevOps.  
@@ -213,17 +313,13 @@ My expertise spans full ML lifecycle — ETL → model → API → AWS deploymen
 - Python, FastAPI, Node.js, NestJS  
 - Scalable microservices  
 - Logging, observability, cloud automation  
+---
+## 📜 License
+
+MIT License (recommended for academic research use).
 
 ---
 
-# 📜 License — MIT
 
-```
-MIT License
-
-Copyright (c) 2025 ...
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-...
-(Full MIT License Text)
-```
+All results and claims are **fully reproducible from code and notebooks**.
+---

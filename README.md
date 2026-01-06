@@ -221,12 +221,7 @@ npm run dev
 ## 🧪 Training
 
 ### Baselines
-Executed via notebooks or training scripts.
-
-### Multitask CNN
-```bash
-python -m src.training.train_multitask_cnn_staged
-```
+Executed via notebook in notebooks/07_multitask_cnn_staged.py.
 
 ---
 

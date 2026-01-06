@@ -69,7 +69,7 @@ const SummaryCards: React.FC<Props> = ({ summary, metrics }) => {
               Completed
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Raw CSV → Preprocessed features → Multitask CNN–Transformer → Results visualised.
+              Upload CSV → Automatic feature preprocessing → Multitask CNN prediction → Results displayed in UI
             </Typography>
           </CardContent>
         </Card>

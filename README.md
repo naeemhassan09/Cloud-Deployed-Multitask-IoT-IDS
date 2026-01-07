@@ -336,6 +336,14 @@ MIT License (recommended for academic research use).
 
 ---
 
+## 📽️ Demo Video
+
+A recorded end-to-end system demonstration is available here:  
+https://drive.google.com/file/d/1dLLmaQRLNB1z5yzvOjDrVeV_-AwhBBlX/view
+
+The video demonstrates the frontend, FastAPI inference service,
+AWS ECS deployment, and multitask CNN model described in the dissertation.
+---
 
 All results and claims are **fully reproducible from code and notebooks**.
 ---
